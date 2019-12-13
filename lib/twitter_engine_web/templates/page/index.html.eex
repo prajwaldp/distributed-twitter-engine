@@ -1,0 +1,5 @@
+<div class="container-fluid" id="app">
+  <router-view>
+    <home-page></home-page>
+  </router-view>
+</div>

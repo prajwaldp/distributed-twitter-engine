@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My TwitterEngine</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body>
+    <main role="main" class="container-fluid">
+      <%= render TwitterEngineWeb.SharedView, "_header.html", assigns %>
+
+      <%= unless is_nil(get_flash(@conn, :info)) do %>
+        <div class="notification is-info" role="alert">
+          <%= get_flash(@conn, :info) %>
+        </div>
+      <% end %>
+
+      <%= unless is_nil(get_flash(@conn, :error)) do %>
+        <div class="notification is-danger" role="alert">
+          <%= get_flash(@conn, :error) %>
+        </div>
+      <% end %>
+
+      <%= render @view_module, @view_template, assigns %>
+
+      <%= render TwitterEngineWeb.SharedView, "_footer.html", assigns %>
+    </main>
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
